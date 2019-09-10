@@ -17,10 +17,6 @@ exports.getAllTours = async (req, res) => {
     console.log(JSON.parse(queryStr))
     const query = Tour.find(JSON.parse(queryStr))
 
-    //{ difficulty: 'easy', duration: { $gte: 5 }}
-
-    // const query = Tour.find().where('duration').equals(5).where('difficulty').equals('easy')
-
     //execute query
     const tours = await query
 
