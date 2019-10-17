@@ -1,4 +1,4 @@
-cont mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const validator = require('validator')
 
 //name, email, photo, password, passwordConfirm
@@ -29,4 +29,4 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema)
 
-module.exports = Tour
+module.exports = User
