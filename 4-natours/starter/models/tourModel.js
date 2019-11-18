@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const slugify = require('slugify')
 const validator = require('validator')
-const User = require('./userModel')
+// const User = require('./userModel')
 
 const toursSchema = new mongoose.Schema({
   name: {
@@ -106,7 +106,12 @@ const toursSchema = new mongoose.Schema({
       day: Number
     }
   ],
-  guides: Array
+  guides: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User'
+    }
+  ]
 }, {
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
@@ -122,11 +127,11 @@ toursSchema.pre('save', function(next) {
   next()
 })
 
-toursSchema.pre('save', async function(next) {
-  const guidesPromises = this.guides.map(async id => await User.findById(id))
-  this.guides = await Promise.all(guidesPromises)
-  next()
-})
+// toursSchema.pre('save', async function(next) {
+//   const guidesPromises = this.guides.map(async id => await User.findById(id))
+//   this.guides = await Promise.all(guidesPromises)
+//   next()
+// })
 
 // toursSchema.pre('save', function(next) {
 //   console.log('Will save document...')
