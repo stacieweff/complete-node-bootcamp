@@ -2,9 +2,21 @@ const express = require('express')
 const fs = require('fs')
 const tourController = require('./../controllers/tourController')
 const authController = require('./../controllers/authController')
+// const reviewController = require('./../controllers/reviewController')
+const reviewRouter = require('./../routes/reviewRoutes')
+
 const router = express.Router()
 
 // router.param('id', tourController.checkID)
+
+
+// POST /tour/1234/reviews
+// GET /tour/1234/reviews
+// GET /tour/1234/reviews/2345
+
+// router.route('/:tourId/reviews').post(authController.protect, authController.restrictTo('user'), reviewController.createReview)
+
+router.use('/:tourId/reviews', reviewRouter)
 
 router.route('/top-5-cheap').get(tourController.aliasTopTours, tourController.getAllTours)
 
