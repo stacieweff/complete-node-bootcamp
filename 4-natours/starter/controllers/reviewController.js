@@ -1,37 +1,41 @@
 const Review = require('./../models/reviewModel')
-const catchAsync = require('./../utils/catchAsync')
-const AppError = require('./../utils/appError')
+// const catchAsync = require('./../utils/catchAsync')
+// const AppError = require('./../utils/appError')
 const factory = require('./handleFactory')
 
-exports.getAllReviews = catchAsync(async (req, res, next) => {
-  let filter = {}
-  if (req.params.tourId) filter = { tour: req.params.tourId }
+exports.getAllReviews = factory.getAll(Review)
+
+// exports.getAllReviews = catchAsync(async (req, res, next) => {
+//   let filter = {}
+//   if (req.params.tourId) filter = { tour: req.params.tourId }
   
-  const reviews = await Review.find(filter)
+//   const reviews = await Review.find(filter)
 
-  res.status(200).json({
-    status: 'success',
-    results: reviews.length,
-    data: {
-      reviews
-    }
-  })
-})
+//   res.status(200).json({
+//     status: 'success',
+//     results: reviews.length,
+//     data: {
+//       reviews
+//     }
+//   })
+// })
 
-exports.getReview = catchAsync(async (req, res, next) => {
-  const review = await Review.findById(req.params.id)
+exports.getReview = factory.getOne(Review)
 
-  if (!review) {
-    return next(new AppError('No tour found with athat ID', 404))
-  }
+// exports.getReview = catchAsync(async (req, res, next) => {
+//   const review = await Review.findById(req.params.id)
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      review
-    }
-  })
-})
+//   if (!review) {
+//     return next(new AppError('No tour found with athat ID', 404))
+//   }
+
+//   res.status(200).json({
+//     status: 'success',
+//     data: {
+//       review
+//     }
+//   })
+// })
 
 exports.setTourUserIds = (req, res, next) => {
     // Allow nested routes
