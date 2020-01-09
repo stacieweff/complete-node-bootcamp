@@ -8416,7 +8416,7 @@ function () {
             return (0, _axios.default)({
               method: 'POST',
               url: 'http://localhost:3000/api/v1/users/login',
-              // http://127.0.0.1:3000/api/v1/users/login
+              // 'http://127.0.0.1:3000/api/v1/users/login'
               data: {
                 email: email,
                 password: password
@@ -8471,7 +8471,8 @@ function () {
             _context2.next = 3;
             return (0, _axios.default)({
               method: 'GET',
-              url: 'http://localhost:3000/api/v1/users/logout'
+              url: 'http://localhost:3000/api/v1/users/logout' // 'http://127.0.0.1:3000/api/v1/users/logout'
+
             });
 
           case 3:
@@ -8529,7 +8530,8 @@ function () {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            url = type === 'password' ? 'http://localhost:3000/api/v1/users/updateMyPassword' : 'http://localhost:3000/api/v1/users/updateMe';
+            url = type === 'password' ? 'http://localhost:3000/api/v1/users/updateMyPassword' : 'http://localhost:3000/api/v1/users/updateMe'; // ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+
             _context.next = 4;
             return (0, _axios.default)({
               method: 'PATCH',
@@ -8601,10 +8603,11 @@ function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return (0, _axios.default)("http://localhost:3000/api/v1/bookings/checkout-session/".concat(tourId));
+            return (0, _axios.default)("http://localhost:3000/api/v1/bookings/checkout-session/".concat(tourId)); // ("http://127.0.0.1:3000/api/v1/bookings/checkout-session/".concat(tourId))
 
           case 3:
             session = _context.sent;
+            // `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
             console.log(session); // 2) Create a checkout form + charge the credit card
 
             _context.next = 7;
